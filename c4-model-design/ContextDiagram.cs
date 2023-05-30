@@ -15,7 +15,7 @@ namespace c4_model_design
 		public SoftwareSystem Reniec {get; private set; }//Reniec: Verificar datos
 		public Person Empleado { get; private set; } //Empleado
 		public Person Jefe { get; private set; } //Jefe
-		public Person Adminstrator { get; private set;		}
+		
 
 		public ContextDiagram(C4 c4)
 		{
