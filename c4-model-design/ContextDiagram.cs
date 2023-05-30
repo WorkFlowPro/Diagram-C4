@@ -1,5 +1,4 @@
 using Structurizr;
-//un comentario 
 
 namespace c4_model_design
 {
@@ -20,6 +19,13 @@ namespace c4_model_design
 		public ContextDiagram(C4 c4)
 		{
 			this.c4 = c4;
+		}
+
+		public int Suma(){
+			int a = 1;
+			int b = 2;
+			int c = a + b;
+			return c;
 		}
 
 		public void Generate() {
