@@ -35,31 +35,31 @@ namespace c4_model_design
 
 		private void AddPeople()
 		{
-			Empleado = c4.Model.AddPerson("Empleado", "Ciudadano peruano.");
-			Jefe = c4.Model.AddPerson("Jefe", "User Admin.");
+			Empleado = c4.Model.AddPerson("Empleado", "Empleado de la empresa que desea mejorar su comunicacion con otros miembros.");
+			Jefe = c4.Model.AddPerson("Jefe", "Jefe de la empresa que supervisa y coordina los proyectos de los empleados.");
 		}
 
 		private void AddSoftwareSystems()
 		{
-			WorkFlowPro = c4.Model.AddSoftwareSystem("Monitoreo del Traslado Aéreo de Vacunas SARS-CoV-2", "Permite el seguimiento y monitoreo del traslado aéreo a nuestro país de las vacunas para la COVID-19.");
-			GoogleCalendar = c4.Model.AddSoftwareSystem("GoogleCalendar", "Plataforma que ofrece una REST API de información geo referencial.");
-			GoogleMeet = c4.Model.AddSoftwareSystem("GoogleMeet", "Permite transmitir información en tiempo real por el avión del vuelo a nuestro sistema");
-			GoogleDrive = c4.Model.AddSoftwareSystem("Google Drive"," ");
-			EmailSystem = c4.Model.AddSoftwareSystem("EmailSystem ", " ");
-			Sunat = c4.Model.AddSoftwareSystem("Sunat ", " ");
-			Reniec = c4.Model.AddSoftwareSystem("Reniec", " ");
+			WorkFlowPro = c4.Model.AddSoftwareSystem("WorkFlowPro", "Software que permite la gestion de proyectos en las empresas.");
+			GoogleCalendar = c4.Model.AddSoftwareSystem("Google Calendar", "Plataforma que ofrece una REST API de la informacion de un calendario.");
+			GoogleMeet = c4.Model.AddSoftwareSystem("Google Meet", "Plataforma que ofrece una REST API de la informacion de una reunion.");
+			GoogleDrive = c4.Model.AddSoftwareSystem("Google Drive","Plataforma que ofrece almacenamiento en la nube.");
+			EmailSystem = c4.Model.AddSoftwareSystem("Email System ", "Plataforma que ofrece un servicio de correo electronico.");
+			Sunat = c4.Model.AddSoftwareSystem("SUNAT ", "Plataforma que ofrece un servicio de verificacion de RUC.");
+			Reniec = c4.Model.AddSoftwareSystem("RENIEC", "Plataforma que ofrece un servicio de verificacion de datos.");
 		}
 
 		private void AddRelationships() {
 			Empleado.Uses(WorkFlowPro, "Realiza consultas para mantenerse al tanto de la planificación de los vuelos hasta la llegada del lote de vacunas al Perú");
 			Jefe.Uses(WorkFlowPro, "Realiza consultas para mantenerse al tanto de la planificación de los vuelos hasta la llegada del lote de vacunas al Perú");
 
-			WorkFlowPro.Uses(GoogleMeet, "Consulta información en tiempo real por el avión del vuelo");
-			WorkFlowPro.Uses(GoogleCalendar, "Usa la API de google maps");
-			WorkFlowPro.Uses(GoogleDrive, " ");
-			WorkFlowPro.Uses(EmailSystem, " ");
-			WorkFlowPro.Uses(Sunat, " ");
-			WorkFlowPro.Uses(Reniec, " ");
+			WorkFlowPro.Uses(GoogleMeet, "Usa la API de Google Meet para realizar las reuniones de coordinación");
+			WorkFlowPro.Uses(GoogleCalendar, "Usa la API de Google Calendar para agendar las reuniones de coordinación");
+			WorkFlowPro.Uses(GoogleDrive, "Usa la API de Google Drive para guardar los proyectos");
+			WorkFlowPro.Uses(EmailSystem, "Usa la API de Email System para enviar correos electronicos");
+			WorkFlowPro.Uses(Sunat, "Usa la API de Sunat para verificar el RUC de la empresa");
+			WorkFlowPro.Uses(Reniec, "Usa la API de Reniec para verificar los datos del usuario");
 		}
 
 		private void ApplyStyles() {
@@ -71,12 +71,12 @@ namespace c4_model_design
 			styles.Add(new ElementStyle(nameof(Jefe)) { Background = "#aa60af", Color = "#ffffff", Shape = Shape.Person });
 
 			styles.Add(new ElementStyle(nameof(WorkFlowPro)) { Background = "#008f39", Color = "#ffffff", Shape = Shape.RoundedBox });
-			styles.Add(new ElementStyle(nameof(GoogleCalendar)) { Background = "#90714c", Color = "#ffffff", Shape = Shape.RoundedBox });
-			styles.Add(new ElementStyle(nameof(GoogleMeet)) { Background = "#2f95c7", Color = "#ffffff", Shape = Shape.RoundedBox });
-			styles.Add(new ElementStyle(nameof(EmailSystem)){Background = "#2f95c7", Color = "#ffffff", Shape = Shape.RoundedBox});
-			styles.Add(new ElementStyle(nameof(GoogleDrive)){Background = "#2f95c7", Color = "#ffffff", Shape = Shape.RoundedBox});
-			styles.Add(new ElementStyle(nameof(Sunat)){Background = "#2f95c7", Color = "#ffffff", Shape = Shape.RoundedBox});
-			styles.Add(new ElementStyle(nameof(Reniec)){Background = "#2f95c7", Color = "#ffffff", Shape = Shape.RoundedBox});
+			styles.Add(new ElementStyle(nameof(GoogleCalendar)) { Background = "#d10202", Color = "#ffffff", Shape = Shape.RoundedBox });
+			styles.Add(new ElementStyle(nameof(GoogleMeet)) { Background = "#d10202", Color = "#ffffff", Shape = Shape.RoundedBox });
+			styles.Add(new ElementStyle(nameof(EmailSystem)){Background = "#d10202", Color = "#ffffff", Shape = Shape.RoundedBox});
+			styles.Add(new ElementStyle(nameof(GoogleDrive)){Background = "#d10202", Color = "#ffffff", Shape = Shape.RoundedBox});
+			styles.Add(new ElementStyle(nameof(Sunat)){Background = "#d10202", Color = "#ffffff", Shape = Shape.RoundedBox});
+			styles.Add(new ElementStyle(nameof(Reniec)){Background = "#d10202", Color = "#ffffff", Shape = Shape.RoundedBox});
 		}
 
 		private void SetTags()
