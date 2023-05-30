@@ -30,10 +30,10 @@ namespace c4_model_design
 
 		private void AddComponents()
 		{
-            DomainLayer = containerDiagram.MonitoringBC.AddComponent("Domain Layer", "", "NodeJS (NestJS)");
-            InterfaceLayer = containerDiagram.MonitoringBC.AddComponent("Interface Layer", "", "NodeJS (NestJS)");
-            ApplicationLayer = containerDiagram.MonitoringBC.AddComponent("Application Layer", "", "NodeJS (NestJS)");
-            InfrastructureLayer = containerDiagram.MonitoringBC.AddComponent("Infrastructure Layer", "", "NodeJS (NestJS)");
+            DomainLayer = containerDiagram.SextoBC.AddComponent("Domain Layer", "", "NodeJS (NestJS)");
+            InterfaceLayer = containerDiagram.SextoBC.AddComponent("Interface Layer", "", "NodeJS (NestJS)");
+            ApplicationLayer = containerDiagram.SextoBC.AddComponent("Application Layer", "", "NodeJS (NestJS)");
+            InfrastructureLayer = containerDiagram.SextoBC.AddComponent("Infrastructure Layer", "", "NodeJS (NestJS)");
         }
 
         private void AddRelationships() {
@@ -60,7 +60,7 @@ namespace c4_model_design
         }
 
 		private void CreateView() {
-			ComponentView componentView = c4.ViewSet.CreateComponentView(containerDiagram.MonitoringBC, "Monitoring Component Diagram", "Monitoring Component Diagram");
+			ComponentView componentView = c4.ViewSet.CreateComponentView(containerDiagram.SextoBC, "Monitoring Component Diagram", "Monitoring Component Diagram");
 			componentView.Add(containerDiagram.MobileApplication);
 			componentView.Add(containerDiagram.WebApplication);
 			componentView.Add(containerDiagram.ApiRest);

@@ -29,11 +29,11 @@ namespace c4_model_design
 
 		private void AddComponents()
 		{
-            DomainLayer = containerDiagram.SecurityBC.AddComponent("Domain Layer", "", "NodeJS (NestJS)");
-            InterfaceLayer = containerDiagram.SecurityBC.AddComponent("Interface Layer", "", "NodeJS (NestJS)");
-            ApplicationLayer = containerDiagram.SecurityBC.AddComponent("Application Layer", "", "NodeJS (NestJS)");
-            InfrastructureLayer = containerDiagram.SecurityBC.AddComponent("Infrastructure Layer", "", "NodeJS (NestJS)");
-            Security = containerDiagram.SecurityBC.AddComponent("Security", "", "NodeJS (NestJS)");
+            DomainLayer = containerDiagram.PrimerBC.AddComponent("Domain Layer", "", "NodeJS (NestJS)");
+            InterfaceLayer = containerDiagram.PrimerBC.AddComponent("Interface Layer", "", "NodeJS (NestJS)");
+            ApplicationLayer = containerDiagram.PrimerBC.AddComponent("Application Layer", "", "NodeJS (NestJS)");
+            InfrastructureLayer = containerDiagram.PrimerBC.AddComponent("Infrastructure Layer", "", "NodeJS (NestJS)");
+            Security = containerDiagram.PrimerBC.AddComponent("Security", "", "NodeJS (NestJS)");
         }
 
         private void AddRelationships() {
@@ -60,7 +60,7 @@ namespace c4_model_design
         }
 
 		private void CreateView() {
-			ComponentView componentView = c4.ViewSet.CreateComponentView(containerDiagram.SecurityBC, "SecurityBC Component Diagram", "SecurityBC Component Diagram");
+			ComponentView componentView = c4.ViewSet.CreateComponentView(containerDiagram.PrimerBC, "SecurityBC Component Diagram", "SecurityBC Component Diagram");
 			componentView.Add(containerDiagram.MobileApplication);
 			componentView.Add(containerDiagram.WebApplication);
 			componentView.Add(containerDiagram.ApiRest);

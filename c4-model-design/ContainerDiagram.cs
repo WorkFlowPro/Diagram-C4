@@ -6,17 +6,17 @@ namespace c4_model_design
 	{
 		private readonly C4 c4;
 		private readonly ContextDiagram contextDiagram;
-		public Container MobileApplication { get; private set; }
-		public Container WebApplication { get; private set; }
-		public Container LandingPage { get; private set; }
-		public Container ApiRest { get; private set; }
-		public Container SecurityBC { get; private set; }
-		public Container FlightPlanningBC { get; private set; }
-		public Container AirportBC { get; private set; }
-		public Container AircraftInventoryBC { get; private set; }
-		public Container VaccinesInventoryBC { get; private set; }
-		public Container MonitoringBC { get; private set; }
-		public Container Database { get; private set; }
+		public Container MobileApplication { get; private set; } // aplicacion mobilo
+		public Container WebApplication { get; private set; } //pagina web aplicacion
+		public Container LandingPage { get; private set; } // nuestra landing page
+		public Container ApiRest { get; private set; } // nuestra API
+		public Container PrimerBC { get; private set; }
+		public Container SegundoBC { get; private set; }
+		public Container TercerBC { get; private set; }
+		public Container CuartoBC { get; private set; }
+		public Container QuintoBC { get; private set; }
+		public Container SextoBC { get; private set; }
+		public Container Database { get; private set; } //nuestra base de datos
 
 		public ContainerDiagram(C4 c4, ContextDiagram contextDiagram)
 		{
@@ -39,12 +39,12 @@ namespace c4_model_design
 
 			ApiRest = contextDiagram.WorkFlowPro.AddContainer("API REST", "API REST", "NodeJS (NestJS) port 8080");
 
-            SecurityBC = contextDiagram.WorkFlowPro.AddContainer("Security BC", "Seguridad", "NodeJS (NestJS)");
-            FlightPlanningBC = contextDiagram.WorkFlowPro.AddContainer("Flight Planning BC", "Planificación de Vuelos", "NodeJS (NestJS)");
-            AirportBC = contextDiagram.WorkFlowPro.AddContainer("Airport BC", "Información de Aeropuertos", "NodeJS (NestJS)");
-            AircraftInventoryBC = contextDiagram.WorkFlowPro.AddContainer("Aircraft Inventory BC", "Inventario de Aviones", "NodeJS (NestJS)");
-            VaccinesInventoryBC = contextDiagram.WorkFlowPro.AddContainer("Vaccines Inventory BC", "Inventario de Vacunas", "NodeJS (NestJS)");
-            MonitoringBC = contextDiagram.WorkFlowPro.AddContainer("Monitoring BC", "Monitoreo en tiempo real del status y ubicación del vuelo que transporta las vacunas", "NodeJS (NestJS)");
+            PrimerBC = contextDiagram.WorkFlowPro.AddContainer("PrimerBC", " ", "NodeJS (NestJS)");
+            SegundoBC = contextDiagram.WorkFlowPro.AddContainer("SegundoBC", " ", "NodeJS (NestJS)");
+            TercerBC = contextDiagram.WorkFlowPro.AddContainer("TercerBC", " ", "NodeJS (NestJS)");
+            CuartoBC = contextDiagram.WorkFlowPro.AddContainer("CuartoBC"," ", "NodeJS (NestJS)");
+            QuintoBC = contextDiagram.WorkFlowPro.AddContainer("QuintoBC", " ", "NodeJS (NestJS)");
+            SextoBC = contextDiagram.WorkFlowPro.AddContainer("SextoBC", " ", "NodeJS (NestJS)");
 
 			Database = contextDiagram.WorkFlowPro.AddContainer("DB", "", "MySQL Server RDS AWS");
 		}
@@ -61,22 +61,22 @@ namespace c4_model_design
 			MobileApplication.Uses(ApiRest, "API Request", "JSON/HTTPS");
 			WebApplication.Uses(ApiRest, "API Request", "JSON/HTTPS");
 
-            ApiRest.Uses(SecurityBC, "API Request", "JSON/HTTPS");
-            ApiRest.Uses(FlightPlanningBC, "API Request", "JSON/HTTPS");
-			ApiRest.Uses(AirportBC, "API Request", "JSON/HTTPS");
-			ApiRest.Uses(AircraftInventoryBC, "API Request", "JSON/HTTPS");
-			ApiRest.Uses(VaccinesInventoryBC, "API Request", "JSON/HTTPS");
-			ApiRest.Uses(MonitoringBC, "API Request", "JSON/HTTPS");
+            ApiRest.Uses(PrimerBC, "API Request", "JSON/HTTPS");
+            ApiRest.Uses(SegundoBC, "API Request", "JSON/HTTPS");
+			ApiRest.Uses(TercerBC, "API Request", "JSON/HTTPS");
+			ApiRest.Uses(CuartoBC, "API Request", "JSON/HTTPS");
+			ApiRest.Uses(QuintoBC, "API Request", "JSON/HTTPS");
+			ApiRest.Uses(SextoBC, "API Request", "JSON/HTTPS");
 
-            SecurityBC.Uses(Database, "", "");
-            FlightPlanningBC.Uses(Database, "", "");
-            AirportBC.Uses(Database, "", "");
-            AircraftInventoryBC.Uses(Database, "", "");
-            VaccinesInventoryBC.Uses(Database, "", "");
-            MonitoringBC.Uses(Database, "", "");
+            PrimerBC.Uses(Database, "", "");
+            SegundoBC.Uses(Database, "", "");
+            TercerBC.Uses(Database, "", "");
+            CuartoBC.Uses(Database, "", "");
+            QuintoBC.Uses(Database, "", "");
+            SextoBC.Uses(Database, "", "");
 
-            MonitoringBC.Uses(contextDiagram.GoogleCalendar, "API Request", "JSON/HTTPS");
-            MonitoringBC.Uses(contextDiagram.GoogleMeet, "API Request", "JSON/HTTPS");
+            SextoBC.Uses(contextDiagram.GoogleCalendar, "API Request", "JSON/HTTPS");
+            SextoBC.Uses(contextDiagram.GoogleMeet, "API Request", "JSON/HTTPS");
 		}
 
 		private void ApplyStyles() {
@@ -89,12 +89,12 @@ namespace c4_model_design
 			styles.Add(new ElementStyle(nameof(LandingPage)) { Background = "#929000", Color = "#ffffff", Shape = Shape.WebBrowser, Icon = "" });
 			styles.Add(new ElementStyle(nameof(ApiRest)) { Shape = Shape.RoundedBox, Background = "#0000ff", Color = "#ffffff", Icon = "" });
 
-            styles.Add(new ElementStyle(nameof(SecurityBC)) { Shape = Shape.Hexagon, Background = "#facc2e", Icon = "" });
-            styles.Add(new ElementStyle(nameof(AirportBC)) { Shape = Shape.Hexagon, Background = "#facc2e", Icon = "" });
-			styles.Add(new ElementStyle(nameof(AircraftInventoryBC)) { Shape = Shape.Hexagon, Background = "#facc2e", Icon = "" });
-			styles.Add(new ElementStyle(nameof(FlightPlanningBC)) { Shape = Shape.Hexagon, Background = "#facc2e", Icon = "" });
-			styles.Add(new ElementStyle(nameof(MonitoringBC)) { Shape = Shape.Hexagon, Background = "#facc2e", Icon = "" });
-			styles.Add(new ElementStyle(nameof(VaccinesInventoryBC)) { Shape = Shape.Hexagon, Background = "#facc2e", Icon = "" });
+            styles.Add(new ElementStyle(nameof(PrimerBC)) { Shape = Shape.Hexagon, Background = "#facc2e", Icon = "" });
+            styles.Add(new ElementStyle(nameof(SegundoBC)) { Shape = Shape.Hexagon, Background = "#facc2e", Icon = "" });
+			styles.Add(new ElementStyle(nameof(TercerBC)) { Shape = Shape.Hexagon, Background = "#facc2e", Icon = "" });
+			styles.Add(new ElementStyle(nameof(CuartoBC)) { Shape = Shape.Hexagon, Background = "#facc2e", Icon = "" });
+			styles.Add(new ElementStyle(nameof(QuintoBC)) { Shape = Shape.Hexagon, Background = "#facc2e", Icon = "" });
+			styles.Add(new ElementStyle(nameof(SextoBC)) { Shape = Shape.Hexagon, Background = "#facc2e", Icon = "" });
 
 			styles.Add(new ElementStyle(nameof(Database)) { Shape = Shape.Cylinder, Background = "#ff0000", Color = "#ffffff", Icon = "" });
 		}
@@ -106,12 +106,12 @@ namespace c4_model_design
 			LandingPage.AddTags(nameof(LandingPage));
 			ApiRest.AddTags(nameof(ApiRest));
 
-            SecurityBC.AddTags(nameof(SecurityBC));
-            AirportBC.AddTags(nameof(AirportBC));
-            AircraftInventoryBC.AddTags(nameof(AircraftInventoryBC));
-            FlightPlanningBC.AddTags(nameof(FlightPlanningBC));
-            MonitoringBC.AddTags(nameof(MonitoringBC));
-            VaccinesInventoryBC.AddTags(nameof(VaccinesInventoryBC));
+            PrimerBC.AddTags(nameof(PrimerBC));
+            SegundoBC.AddTags(nameof(SegundoBC));
+            TercerBC.AddTags(nameof(TercerBC));
+            CuartoBC.AddTags(nameof(CuartoBC));
+            QuintoBC.AddTags(nameof(QuintoBC));
+            SextoBC.AddTags(nameof(SextoBC));
 
 			Database.AddTags(nameof(Database));
 		}

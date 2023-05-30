@@ -28,10 +28,10 @@ namespace c4_model_design
 
 		private void AddComponents()
 		{
-			DomainLayer = containerDiagram.VaccinesInventoryBC.AddComponent("Domain Layer", "", "NodeJS (NestJS)");
-            InterfaceLayer = containerDiagram.VaccinesInventoryBC.AddComponent("Interface Layer", "", "NodeJS (NestJS)");
-            ApplicationLayer = containerDiagram.VaccinesInventoryBC.AddComponent("Application Layer", "", "NodeJS (NestJS)");
-            InfrastructureLayer = containerDiagram.VaccinesInventoryBC.AddComponent("Infrastructure Layer", "", "NodeJS (NestJS)");
+			DomainLayer = containerDiagram.QuintoBC.AddComponent("Domain Layer", "", "NodeJS (NestJS)");
+            InterfaceLayer = containerDiagram.QuintoBC.AddComponent("Interface Layer", "", "NodeJS (NestJS)");
+            ApplicationLayer = containerDiagram.QuintoBC.AddComponent("Application Layer", "", "NodeJS (NestJS)");
+            InfrastructureLayer = containerDiagram.QuintoBC.AddComponent("Infrastructure Layer", "", "NodeJS (NestJS)");
 		}
 
 		private void AddRelationships() {
@@ -58,7 +58,7 @@ namespace c4_model_design
 		}
 
 		private void CreateView() {
-			ComponentView componentView = c4.ViewSet.CreateComponentView(containerDiagram.VaccinesInventoryBC, "VaccinesInventoryBC Component Diagram", "VaccinesInventoryBC Component Diagram");
+			ComponentView componentView = c4.ViewSet.CreateComponentView(containerDiagram.QuintoBC, "VaccinesInventoryBC Component Diagram", "VaccinesInventoryBC Component Diagram");
 			componentView.Add(containerDiagram.MobileApplication);
 			componentView.Add(containerDiagram.WebApplication);
 			componentView.Add(containerDiagram.Database);

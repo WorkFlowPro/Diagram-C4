@@ -28,10 +28,10 @@ namespace c4_model_design
 
 		private void AddComponents()
 		{
-			DomainLayer = containerDiagram.AircraftInventoryBC.AddComponent("Domain Layer", "", "NodeJS (NestJS)");
-            InterfaceLayer = containerDiagram.AircraftInventoryBC.AddComponent("Interface Layer", "", "NodeJS (NestJS)");
-            ApplicationLayer = containerDiagram.AircraftInventoryBC.AddComponent("Application Layer", "", "NodeJS (NestJS)");
-            InfrastructureLayer = containerDiagram.AircraftInventoryBC.AddComponent("Infrastructure Layer", "", "NodeJS (NestJS)");
+			DomainLayer = containerDiagram.CuartoBC.AddComponent("Domain Layer", "", "NodeJS (NestJS)");
+            InterfaceLayer = containerDiagram.CuartoBC.AddComponent("Interface Layer", "", "NodeJS (NestJS)");
+            ApplicationLayer = containerDiagram.CuartoBC.AddComponent("Application Layer", "", "NodeJS (NestJS)");
+            InfrastructureLayer = containerDiagram.CuartoBC.AddComponent("Infrastructure Layer", "", "NodeJS (NestJS)");
 		}
 
 		private void AddRelationships() {
@@ -60,7 +60,7 @@ namespace c4_model_design
 		}
 
 		private void CreateView() {
-			ComponentView componentView = c4.ViewSet.CreateComponentView(containerDiagram.AircraftInventoryBC, "AircraftInventoryBC Component Diagram", "AircraftInventoryBC Component Diagram");
+			ComponentView componentView = c4.ViewSet.CreateComponentView(containerDiagram.CuartoBC, "AircraftInventoryBC Component Diagram", "AircraftInventoryBC Component Diagram");
 			componentView.Add(containerDiagram.MobileApplication);
 			componentView.Add(containerDiagram.WebApplication);
 			componentView.Add(containerDiagram.Database);

@@ -28,10 +28,10 @@ namespace c4_model_design
 
 		private void AddComponents()
 		{
-            DomainLayer = containerDiagram.FlightPlanningBC.AddComponent("Domain Layer", "", "NodeJS (NestJS)");
-            InterfaceLayer = containerDiagram.FlightPlanningBC.AddComponent("Interface Layer", "", "NodeJS (NestJS)");
-            ApplicationLayer = containerDiagram.FlightPlanningBC.AddComponent("Application Layer", "", "NodeJS (NestJS)");
-            InfrastructureLayer = containerDiagram.FlightPlanningBC.AddComponent("Infrastructure Layer", "", "NodeJS (NestJS)");
+            DomainLayer = containerDiagram.SegundoBC.AddComponent("Domain Layer", "", "NodeJS (NestJS)");
+            InterfaceLayer = containerDiagram.SegundoBC.AddComponent("Interface Layer", "", "NodeJS (NestJS)");
+            ApplicationLayer = containerDiagram.SegundoBC.AddComponent("Application Layer", "", "NodeJS (NestJS)");
+            InfrastructureLayer = containerDiagram.SegundoBC.AddComponent("Infrastructure Layer", "", "NodeJS (NestJS)");
         }
 
         private void AddRelationships() {
@@ -56,7 +56,7 @@ namespace c4_model_design
         }
 
 		private void CreateView() {
-			ComponentView componentView = c4.ViewSet.CreateComponentView(containerDiagram.FlightPlanningBC, "FlightPlanningBC Component Diagram", "FlightPlanningBC Component Diagram");
+			ComponentView componentView = c4.ViewSet.CreateComponentView(containerDiagram.SegundoBC, "FlightPlanningBC Component Diagram", "FlightPlanningBC Component Diagram");
 			componentView.Add(containerDiagram.MobileApplication);
 			componentView.Add(containerDiagram.WebApplication);
 			componentView.Add(containerDiagram.ApiRest);
