@@ -10,6 +10,7 @@ namespace c4_model_design
 		public SoftwareSystem GoogleMeet { get; private set; } //Google Meet: reuniones
 		public SoftwareSystem GoogleDrive {get; private set; } //Google Drive: guardar proyectos
 		public SoftwareSystem EmailSystem {get; private set; }//Email system
+		public SoftwareSystem Stripe {get; private set;} //Stripe system
 		public SoftwareSystem Sunat {get; private set; }//Sunat: RUC de la empresa para verificar
 		public SoftwareSystem Reniec {get; private set; }//Reniec: Verificar datos
 		public Person Empleado { get; private set; } //Empleado
@@ -46,6 +47,7 @@ namespace c4_model_design
 			GoogleMeet = c4.Model.AddSoftwareSystem("Google Meet", "Plataforma que ofrece una REST API de la informacion de una reunion.");
 			GoogleDrive = c4.Model.AddSoftwareSystem("Google Drive","Plataforma que ofrece almacenamiento en la nube.");
 			EmailSystem = c4.Model.AddSoftwareSystem("Email System ", "Plataforma que ofrece un servicio de correo electronico.");
+			Stripe = c4.Model.AddSoftwareSystem("Stripe", "Plataforma que ofrece un servicio de pagos de manera segura y confiable");
 			Sunat = c4.Model.AddSoftwareSystem("SUNAT ", "Plataforma que ofrece un servicio de verificacion de RUC.");
 			Reniec = c4.Model.AddSoftwareSystem("RENIEC", "Plataforma que ofrece un servicio de verificacion de datos.");
 		}
@@ -58,6 +60,7 @@ namespace c4_model_design
 			WorkFlowPro.Uses(GoogleCalendar, "Usa la API de Google Calendar para agendar las reuniones de coordinación");
 			WorkFlowPro.Uses(GoogleDrive, "Usa la API de Google Drive para guardar los proyectos");
 			WorkFlowPro.Uses(EmailSystem, "Usa la API de Email System para enviar correos electronicos");
+			WorkFlowPro.Uses(Stripe, "Usa la API de Stripe para los pagos de las empresas por nuestro servicio");
 			WorkFlowPro.Uses(Sunat, "Usa la API de Sunat para verificar el RUC de la empresa");
 			WorkFlowPro.Uses(Reniec, "Usa la API de Reniec para verificar los datos del usuario");
 		}
@@ -75,6 +78,7 @@ namespace c4_model_design
 			styles.Add(new ElementStyle(nameof(GoogleMeet)) { Background = "#d10202", Color = "#ffffff", Shape = Shape.RoundedBox });
 			styles.Add(new ElementStyle(nameof(EmailSystem)){Background = "#d10202", Color = "#ffffff", Shape = Shape.RoundedBox});
 			styles.Add(new ElementStyle(nameof(GoogleDrive)){Background = "#d10202", Color = "#ffffff", Shape = Shape.RoundedBox});
+			styles.Add(new ElementStyle(nameof(Stripe)){Background = "#d10202", Color = "#ffffff", Shape = Shape.RoundedBox});
 			styles.Add(new ElementStyle(nameof(Sunat)){Background = "#d10202", Color = "#ffffff", Shape = Shape.RoundedBox});
 			styles.Add(new ElementStyle(nameof(Reniec)){Background = "#d10202", Color = "#ffffff", Shape = Shape.RoundedBox});
 		}
@@ -89,6 +93,7 @@ namespace c4_model_design
 			GoogleMeet.AddTags(nameof(GoogleMeet));
 			GoogleDrive.AddTags(nameof(GoogleDrive));
 			EmailSystem.AddTags(nameof(EmailSystem));
+			Stripe.AddTags(nameof(Stripe));
 			Sunat.AddTags(nameof(Sunat));
 			Reniec.AddTags(nameof(Reniec));
 		}
