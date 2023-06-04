@@ -2,7 +2,7 @@ using Structurizr;
 
 namespace c4_model_design
 {
-	public class VaccinesInventoryBCComponentDiagram
+	public class PaymentsBCComponentDiagram
     {
 		private readonly C4 c4;
 		private readonly ContainerDiagram containerDiagram;
@@ -10,14 +10,14 @@ namespace c4_model_design
 
         public Component DomainLayer { get; private set; }
         public Component InterfaceLayer { get; private set; }
-		public Component ApplicationLayer { get; private set; }
+        public Component ApplicationLayer { get; private set; }
         public Component InfrastructureLayer { get; private set; }
 
-		public VaccinesInventoryBCComponentDiagram(C4 c4, ContainerDiagram containerDiagram)
+        public PaymentsBCComponentDiagram(C4 c4, ContainerDiagram containerDiagram)
 		{
 			this.c4 = c4;
 			this.containerDiagram = containerDiagram;
-		}
+        }
 
 		public void Generate() {
 			AddComponents();
@@ -28,39 +28,38 @@ namespace c4_model_design
 
 		private void AddComponents()
 		{
-			DomainLayer = containerDiagram.QuintoBC.AddComponent("Domain Layer", "", "NodeJS (NestJS)");
-            InterfaceLayer = containerDiagram.QuintoBC.AddComponent("Interface Layer", "", "NodeJS (NestJS)");
-            ApplicationLayer = containerDiagram.QuintoBC.AddComponent("Application Layer", "", "NodeJS (NestJS)");
-            InfrastructureLayer = containerDiagram.QuintoBC.AddComponent("Infrastructure Layer", "", "NodeJS (NestJS)");
-		}
-
-		private void AddRelationships() {
-			containerDiagram.MobileApplication.Uses(InterfaceLayer, "", "JSON/HTTPS");
-            containerDiagram.WebApplication.Uses(InterfaceLayer, "", "JSON/HTTPS");
-
-            InterfaceLayer.Uses(ApplicationLayer, "", "");
-            ApplicationLayer.Uses(DomainLayer, "", "");
-			ApplicationLayer.Uses(InfrastructureLayer, "", "");
-            InfrastructureLayer.Uses(DomainLayer, "", "");
-			InfrastructureLayer.Uses(containerDiagram.Database, "Usa", "");
+            DomainLayer = containerDiagram.PaymentsBC.AddComponent("Domain Layer", "", "NodeJS (NestJS)");
+            InterfaceLayer = containerDiagram.PaymentsBC.AddComponent("Interface Layer", "", "NodeJS (NestJS)");
+            ApplicationLayer = containerDiagram.PaymentsBC.AddComponent("Application Layer", "", "NodeJS (NestJS)");
+            InfrastructureLayer = containerDiagram.PaymentsBC.AddComponent("Infrastructure Layer", "", "NodeJS (NestJS)");
         }
 
-        private void ApplyStyles() {
+        private void AddRelationships() {
+            containerDiagram.ApiRest.Uses(InterfaceLayer, "", "");
+            InterfaceLayer.Uses(ApplicationLayer, "", "");
+            ApplicationLayer.Uses(DomainLayer, "", "");
+            ApplicationLayer.Uses(InfrastructureLayer, "", "");
+            InfrastructureLayer.Uses(DomainLayer, "", "");
+            InfrastructureLayer.Uses(containerDiagram.Database, "Usa", "");
+        }
+
+		private void ApplyStyles() {
 			SetTags();
 		}
 
 		private void SetTags()
 		{
-			DomainLayer.AddTags(this.componentTag);
+            DomainLayer.AddTags(this.componentTag);
             InterfaceLayer.AddTags(this.componentTag);
             ApplicationLayer.AddTags(this.componentTag);
             InfrastructureLayer.AddTags(this.componentTag);
-		}
+        }
 
 		private void CreateView() {
-			ComponentView componentView = c4.ViewSet.CreateComponentView(containerDiagram.QuintoBC, "VaccinesInventoryBC Component Diagram", "VaccinesInventoryBC Component Diagram");
+			ComponentView componentView = c4.ViewSet.CreateComponentView(containerDiagram.PaymentsBC, "PaymentsBC Component Diagram", "PaymentsBC Component Diagram");
 			componentView.Add(containerDiagram.MobileApplication);
 			componentView.Add(containerDiagram.WebApplication);
+			componentView.Add(containerDiagram.ApiRest);
 			componentView.Add(containerDiagram.Database);
 			componentView.AddAllComponents();
 		}

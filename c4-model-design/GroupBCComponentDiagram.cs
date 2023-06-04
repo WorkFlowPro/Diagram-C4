@@ -2,7 +2,7 @@ using Structurizr;
 
 namespace c4_model_design
 {
-	public class AircraftInventoryBCComponentDiagram
+	public class GroupBCComponentDiagram
 	{
 		private readonly C4 c4;
 		private readonly ContainerDiagram containerDiagram;
@@ -13,7 +13,7 @@ namespace c4_model_design
 		public Component ApplicationLayer { get; private set; }
         public Component InfrastructureLayer { get; private set; }
 
-		public AircraftInventoryBCComponentDiagram(C4 c4, ContainerDiagram containerDiagram)
+		public GroupBCComponentDiagram(C4 c4, ContainerDiagram containerDiagram)
 		{
 			this.c4 = c4;
 			this.containerDiagram = containerDiagram;
@@ -28,10 +28,10 @@ namespace c4_model_design
 
 		private void AddComponents()
 		{
-			DomainLayer = containerDiagram.CuartoBC.AddComponent("Domain Layer", "", "NodeJS (NestJS)");
-            InterfaceLayer = containerDiagram.CuartoBC.AddComponent("Interface Layer", "", "NodeJS (NestJS)");
-            ApplicationLayer = containerDiagram.CuartoBC.AddComponent("Application Layer", "", "NodeJS (NestJS)");
-            InfrastructureLayer = containerDiagram.CuartoBC.AddComponent("Infrastructure Layer", "", "NodeJS (NestJS)");
+			DomainLayer = containerDiagram.GroupBC.AddComponent("Domain Layer", "", "NodeJS (NestJS)");
+            InterfaceLayer = containerDiagram.GroupBC.AddComponent("Interface Layer", "", "NodeJS (NestJS)");
+            ApplicationLayer = containerDiagram.GroupBC.AddComponent("Application Layer", "", "NodeJS (NestJS)");
+            InfrastructureLayer = containerDiagram.GroupBC.AddComponent("Infrastructure Layer", "", "NodeJS (NestJS)");
 		}
 
 		private void AddRelationships() {
@@ -60,7 +60,7 @@ namespace c4_model_design
 		}
 
 		private void CreateView() {
-			ComponentView componentView = c4.ViewSet.CreateComponentView(containerDiagram.CuartoBC, "AircraftInventoryBC Component Diagram", "AircraftInventoryBC Component Diagram");
+			ComponentView componentView = c4.ViewSet.CreateComponentView(containerDiagram.GroupBC, "GroupBC Component Diagram", "GroupBC Component Diagram");
 			componentView.Add(containerDiagram.MobileApplication);
 			componentView.Add(containerDiagram.WebApplication);
 			componentView.Add(containerDiagram.Database);

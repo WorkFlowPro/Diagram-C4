@@ -28,11 +28,11 @@ namespace c4_model_design
 			ContextDiagram contextDiagram = new ContextDiagram(this);
 			ContainerDiagram containerDiagram = new ContainerDiagram(this, contextDiagram);
             WorkFlowProComponent monitoringComponentDiagram = new WorkFlowProComponent(this, contextDiagram, containerDiagram);
-            SecurityBCComponentDiagram securityComponentDiagram = new SecurityBCComponentDiagram(this, containerDiagram);
-            FlightPlanningBCComponentDiagram flightPlanningComponentDiagram = new FlightPlanningBCComponentDiagram(this, containerDiagram);
-            AirportBCComponentDiagram airportComponentDiagram = new AirportBCComponentDiagram(this, containerDiagram);
-            AircraftInventoryBCComponentDiagram aircraftInventoryComponentDiagram = new AircraftInventoryBCComponentDiagram(this, containerDiagram);
-            VaccinesInventoryBCComponentDiagram vaccinesInventoryComponentDiagram = new VaccinesInventoryBCComponentDiagram(this, containerDiagram);
+            AcountsBCComponentDiagram securityComponentDiagram = new AcountsBCComponentDiagram(this, containerDiagram);
+            ResponsibilityBCComponentDiagram flightPlanningComponentDiagram = new ResponsibilityBCComponentDiagram(this, containerDiagram);
+            PaymentsBCComponentDiagram airportComponentDiagram = new PaymentsBCComponentDiagram(this, containerDiagram);
+            GroupBCComponentDiagram aircraftInventoryComponentDiagram = new GroupBCComponentDiagram(this, containerDiagram);
+            SecurityBCComponentDiagram vaccinesInventoryComponentDiagram = new SecurityBCComponentDiagram(this, containerDiagram);
             contextDiagram.Generate();
 			containerDiagram.Generate();
             monitoringComponentDiagram.Generate();

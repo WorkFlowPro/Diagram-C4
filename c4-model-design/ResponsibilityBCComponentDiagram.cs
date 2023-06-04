@@ -2,7 +2,7 @@ using Structurizr;
 
 namespace c4_model_design
 {
-	public class AirportBCComponentDiagram
+	public class ResponsibilityBCComponentDiagram
     {
 		private readonly C4 c4;
 		private readonly ContainerDiagram containerDiagram;
@@ -13,7 +13,7 @@ namespace c4_model_design
         public Component ApplicationLayer { get; private set; }
         public Component InfrastructureLayer { get; private set; }
 
-        public AirportBCComponentDiagram(C4 c4, ContainerDiagram containerDiagram)
+        public ResponsibilityBCComponentDiagram(C4 c4, ContainerDiagram containerDiagram)
 		{
 			this.c4 = c4;
 			this.containerDiagram = containerDiagram;
@@ -28,10 +28,10 @@ namespace c4_model_design
 
 		private void AddComponents()
 		{
-            DomainLayer = containerDiagram.TercerBC.AddComponent("Domain Layer", "", "NodeJS (NestJS)");
-            InterfaceLayer = containerDiagram.TercerBC.AddComponent("Interface Layer", "", "NodeJS (NestJS)");
-            ApplicationLayer = containerDiagram.TercerBC.AddComponent("Application Layer", "", "NodeJS (NestJS)");
-            InfrastructureLayer = containerDiagram.TercerBC.AddComponent("Infrastructure Layer", "", "NodeJS (NestJS)");
+            DomainLayer = containerDiagram.ResponsibilityBC.AddComponent("Domain Layer", "", "NodeJS (NestJS)");
+            InterfaceLayer = containerDiagram.ResponsibilityBC.AddComponent("Interface Layer", "", "NodeJS (NestJS)");
+            ApplicationLayer = containerDiagram.ResponsibilityBC.AddComponent("Application Layer", "", "NodeJS (NestJS)");
+            InfrastructureLayer = containerDiagram.ResponsibilityBC.AddComponent("Infrastructure Layer", "", "NodeJS (NestJS)");
         }
 
         private void AddRelationships() {
@@ -56,7 +56,7 @@ namespace c4_model_design
         }
 
 		private void CreateView() {
-			ComponentView componentView = c4.ViewSet.CreateComponentView(containerDiagram.TercerBC, "AirportBC Component Diagram", "AirportBC Component Diagram");
+			ComponentView componentView = c4.ViewSet.CreateComponentView(containerDiagram.ResponsibilityBC, "ResponsibilityBC Component Diagram", "ResponsibilityBC Component Diagram");
 			componentView.Add(containerDiagram.MobileApplication);
 			componentView.Add(containerDiagram.WebApplication);
 			componentView.Add(containerDiagram.ApiRest);
