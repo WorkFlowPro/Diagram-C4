@@ -41,9 +41,9 @@ namespace c4_model_design
 		{
 			MobileApplication = contextDiagram.WorkFlowPro.AddContainer("Mobile App", "Permite a los usuarios visualizar un dashboard con el resumen de toda la información del traslado de los lotes de vacunas.", "Swift UI");
 			WebApplication = contextDiagram.WorkFlowPro.AddContainer("Web App", "Permite a los usuarios visualizar un dashboard con el resumen de toda la información del traslado de los lotes de vacunas.", "React");
-			LandingPage = contextDiagram.WorkFlowPro.AddContainer("Landing Page", "", "React");
+			LandingPage = contextDiagram.WorkFlowPro.AddContainer("Landing Page", "Muestra los servicios que ofrece WorkFlowPro", "React");
 
-			ApiRest = contextDiagram.WorkFlowPro.AddContainer("API REST", "API REST", "NodeJS (NestJS) port 8080");
+			ApiRest = contextDiagram.WorkFlowPro.AddContainer("API REST", "Provee los servicios de la lógica del negocio vía JSON", "NodeJS (NestJS) port 8080");
 
             AcountsBC = contextDiagram.WorkFlowPro.AddContainer("AcountsBC", "Bounded context que se encarga de la gestion de los perfiles de los usuarios ", "NodeJS (NestJS)");
             ResponsibilityBC = contextDiagram.WorkFlowPro.AddContainer("ResponsibilityBC", "Bounded context que se encarga de la gestion de las actividades que realiza el Empleado  ", "NodeJS (NestJS)");
@@ -54,7 +54,7 @@ namespace c4_model_design
 			ServiceBC = contextDiagram.WorkFlowPro.AddContainer("ServiceBC", "Bounded context que se encarga de brindar servicios de ayuda en las actividades de los usuarios", "NodeJS (NestJS)");
 			NotificationBC = contextDiagram.WorkFlowPro.AddContainer("NotificationBC", "Bounded context que se encarga de comunicar las actividades entre los altos mandos y los empleados", "NodeJS (NestJS)");
 
-			Database = contextDiagram.WorkFlowPro.AddContainer("DB", "", "MySQL Server RDS AWS");
+			Database = contextDiagram.WorkFlowPro.AddContainer("Data Base", "Almacena los datos de los usuarios y las empresas, las facturas de las suscripciones y los detalles de las actividades  ", "MySQL Server RDS AWS");
 		}
 
 		private void AddRelationships() {
@@ -69,14 +69,14 @@ namespace c4_model_design
 			MobileApplication.Uses(ApiRest, "API Request", "JSON/HTTPS");
 			WebApplication.Uses(ApiRest, "API Request", "JSON/HTTPS");
 
-            ApiRest.Uses(AcountsBC, "API Request", "JSON/HTTPS");
-            ApiRest.Uses(ResponsibilityBC, "API Request", "JSON/HTTPS");
-			ApiRest.Uses(PaymentsBC, "API Request", "JSON/HTTPS");
-			ApiRest.Uses(GroupBC, "API Request", "JSON/HTTPS");
-			ApiRest.Uses(SecurityBC, "API Request", "JSON/HTTPS");
-			ApiRest.Uses(CommunicationBC, "API Request", "JSON/HTTPS");
-			ApiRest.Uses(ServiceBC, "API Request", "JSON/HTTPS");
-			ApiRest.Uses(NotificationBC, "API Request", "JSON/HTTPS");
+            ApiRest.Uses(AcountsBC, "", "");
+            ApiRest.Uses(ResponsibilityBC, "", "");
+			ApiRest.Uses(PaymentsBC, "", "");
+			ApiRest.Uses(GroupBC, "", "");
+			ApiRest.Uses(SecurityBC, "", "");
+			ApiRest.Uses(CommunicationBC, "", "");
+			ApiRest.Uses(ServiceBC, "", "");
+			ApiRest.Uses(NotificationBC, "", "");
 
             AcountsBC.Uses(Database, "", "");
             ResponsibilityBC.Uses(Database, "", "");
@@ -87,17 +87,17 @@ namespace c4_model_design
 			ServiceBC.Uses(Database, "", "");
 			NotificationBC.Uses(Database, "", "");
 
-			AcountsBC.Uses(contextDiagram.Reniec, "API Request", "JSON/HTTPS");
-			AcountsBC.Uses(contextDiagram.Sunat, "API Request", "JSON/HTTPS");
-			AcountsBC.Uses(contextDiagram.EmailSystem, "API Request", "JSON/HTTPS");
-			ResponsibilityBC.Uses(contextDiagram.GoogleDrive, "API Request", "JSON/HTTPS");
-			PaymentsBC.Uses(contextDiagram.Stripe, "API Request", "JSON/HTTPS");
-			SecurityBC.Uses(contextDiagram.EmailSystem, "API Request", "JSON/HTTPS");
-			SecurityBC.Uses(contextDiagram.Reniec, "API Request", "JSON/HTTPS");
-			CommunicationBC.Uses(contextDiagram.GoogleCalendar, "API Request", "JSON/HTTPS");
-			CommunicationBC.Uses(contextDiagram.GoogleMeet, "API Request", "JSON/HTTPS");
-			NotificationBC.Uses(contextDiagram.GoogleCalendar, "API Request", "JSON/HTTPS");
-			NotificationBC.Uses(contextDiagram.EmailSystem, "API Request", "JSON/HTTPS");
+			AcountsBC.Uses(contextDiagram.Reniec, "Valida que los datos del usuario existan", "JSON/HTTPS");
+			AcountsBC.Uses(contextDiagram.Sunat, "Valida que los datos de la empresa existan", "JSON/HTTPS");
+			AcountsBC.Uses(contextDiagram.EmailSystem, "Envio de correos entre los usuarios", "JSON/HTTPS");
+			ResponsibilityBC.Uses(contextDiagram.GoogleDrive, "Guardado de actividades", "JSON/HTTPS");
+			PaymentsBC.Uses(contextDiagram.Stripe, "Asegura que los pagos sean seguros", "JSON/HTTPS");
+			SecurityBC.Uses(contextDiagram.EmailSystem, "Valida por medio de un email", "JSON/HTTPS");
+			SecurityBC.Uses(contextDiagram.Reniec, "Valida que los datos del usuario existan", "JSON/HTTPS");
+			CommunicationBC.Uses(contextDiagram.GoogleCalendar, "Agendar actividades", "JSON/HTTPS");
+			CommunicationBC.Uses(contextDiagram.GoogleMeet, "Programar reuniones", "JSON/HTTPS");
+			NotificationBC.Uses(contextDiagram.GoogleCalendar, "Notifica las actividades", "JSON/HTTPS");
+			NotificationBC.Uses(contextDiagram.EmailSystem, "Notifica por correo", "JSON/HTTPS");
 
 
             
